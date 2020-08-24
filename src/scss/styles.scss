@@ -4,5 +4,8 @@
 @import './base/settings';
 
 // Components
-@import './components/auth';
 @import './components/buttons';
+
+// layout
+@import './components/auth';
+@import './components/journal';
