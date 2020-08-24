@@ -1,11 +1,17 @@
 import React from 'react'
 import { Sidebar } from './Sidebar'
+import { MainEmpty } from './MainEmpty'
+import { NoteScreen } from '../notes/NoteScreen'
 
 export const JournalScreen = () => {
   return (
-    <div className="joutnal__wrapper">
+    <div className="journal__wrapper">
       <Sidebar />
-      <main><h1>Main content</h1></main>
+
+      <main className="journal__wrapper-main">
+      <NoteScreen />
+        {/* <MainEmpty /> */}
+      </main>
     </div>
   )
 }

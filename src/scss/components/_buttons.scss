@@ -4,12 +4,16 @@
   color: #fff;
   font-size: 12px;
   padding: 7px 10px 7px 10px;
-  transition: background .25s ease-in-out;
+  transition: background .2s ease-in-out;
   cursor: pointer;
 
   &:focus {
     border:none;
     outline: none;
+  }
+
+  &:hover {
+    background: rgba(#fff, .1);
   }
 
   &-block {
