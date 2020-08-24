@@ -1,7 +1,6 @@
 .notes__main {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .notes__appbar {
@@ -11,4 +10,42 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
+}
+
+.notes__content {
+  max-height: 800px;
+  overflow: hidden;
+  text-align: center;
+  width: 80%;
+  margin: 3em auto 0;
+}
+
+.notes__input, 
+.notes__textarea {
+  border: none;
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+} 
+
+.notes__input {
+  border-bottom: 1px solid grey;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.notes__textarea {
+  font-size: 1.2em;
+  height: auto;
+}
+
+.notes__image {
+  width: 30%;
+  img {
+    width: 100%;
+  }
 }

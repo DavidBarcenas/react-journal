@@ -9,7 +9,7 @@ export const JournalScreen = () => {
       <Sidebar />
 
       <main className="journal__wrapper-main">
-      <NoteScreen />
+        <NoteScreen />
         {/* <MainEmpty /> */}
       </main>
     </div>
