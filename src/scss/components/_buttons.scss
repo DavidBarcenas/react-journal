@@ -1,0 +1,59 @@
+.btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  padding: 7px 10px 7px 10px;
+  transition: background .25s ease-in-out;
+  cursor: pointer;
+
+  &:focus {
+    border:none;
+    outline: none;
+  }
+
+  &-block {
+    width: 100%;
+  }
+}
+
+
+// Variations
+
+.btn-primary {
+  background-color: $primary;
+  border-radius: 2px;
+
+  &:disabled {
+   background: lighten($primary, 15); 
+  }
+
+  &:hover {
+    background: darken($primary, 20); 
+  }
+}
+
+
+.btn__google {
+  display: flex;
+  align-items: center;
+  background: #2196f3;
+  
+  &-img {
+    width: 20px;
+    padding: 5px;
+    background: #fff;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  span {
+    width: calc(100% - 30px);
+  }
+
+  &:hover {
+    background: darken(#2196f3, 20); 
+  }
+}

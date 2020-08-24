@@ -1,5 +1,8 @@
-body, html {
+html {
+  box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -7,6 +10,11 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 a {
@@ -19,4 +27,8 @@ h1,h2,h3,h4,h5,h6 {
 
 ol, ul {
   list-style: none;
+}
+
+img {
+  display: block;
 }

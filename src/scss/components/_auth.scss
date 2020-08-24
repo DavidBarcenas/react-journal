@@ -1,0 +1,40 @@
+.auth__main {
+  background: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.auth__container {
+  background: #fff;
+  box-shadow: 0 3px $dark-grey;
+  border-radius: 2px;
+  padding: 1em;
+  width: 250px;
+  font-family: inherit;
+}
+
+.auth__input {
+  border: none;
+  border-bottom: 1px solid $primary;
+  width: 100%;
+  padding: 5px;
+  margin: .5em 0;
+  font-size: .9em;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:last-of-type {
+    margin-bottom: 1em;
+  }
+}
+
+.auth__social-text {
+  display: block;
+  margin-top: 1em;
+  font-size: .9em;
+}
