@@ -13,7 +13,7 @@ export const NoteScreen = () => {
         </form>
 
         <div className="notes__image">
-          <img src="https://images6.alphacoders.com/857/857790.jpg" alt="note image"/>
+          <img src="https://images6.alphacoders.com/857/857790.jpg" alt="note"/>
         </div>
       </div>
     </div>
