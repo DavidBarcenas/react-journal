@@ -1,5 +1,8 @@
 import { types } from "../types/types";
 
+/**
+ * startLoginEmailPwd // async action
+ */
 export const startLoginEmailPwd = ( email, pwd ) => {
   return ( dispatch ) => {
     setTimeout(() => {
