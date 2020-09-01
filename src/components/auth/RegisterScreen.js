@@ -1,16 +1,56 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from '../../hooks/useForm'
+import isEmail from 'validator/lib/isEmail';
 
 export const RegisterScreen = () => {
+
+  /* DELETE INITIFORM FOR PRODUCTION ============== */
+  const initialForm = {
+    name: 'Maximilian',
+    email: 'max@mail.com',
+    pwd: 'helloworld12',
+    pwdConfirm: 'helloworld12',
+  }
+
+  const [ formValues, handleInputChange ] = useForm(initialForm);
+  const { name, email, pwd, pwdConfirm } = formValues;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if( isFormValid() ) {
+      console.log('is correct')
+    }
+  }
+
+  const isFormValid = () => {
+    if( name.trim().length === 0 ) {
+      console.log('Name is required')
+      return false;
+    } else if( !isEmail( email ) ) {
+      console.log('Email is not valid')
+      return false;
+    } else if( pwd !== pwdConfirm || pwd.length < 5 ) {
+      console.log('Password should be at least six characters and match each other')
+      return false;
+    }
+
+    return true;
+  }
+
   return (
     <>
       <h3 className="auth__title">Register</h3>
 
-      <form>
-        <input type="text" className="auth__input" placeholder="Name" name="name"/>
-        <input type="email" className="auth__input" placeholder="Email" name="mail"/>
-        <input type="password" className="auth__input" placeholder="Password" name="pwd"/>
-        <input type="password" className="auth__input" placeholder="Password confirm" name="pwdConfirm"/>
+      <div className="auth__alert-error">
+        Hola mundo
+      </div>
+
+      <form onSubmit={ handleSubmit }>
+        <input type="text" className="auth__input" placeholder="Name" name="name" value={ name } onChange={ handleInputChange } />
+        <input type="email" className="auth__input" placeholder="Email" name="email" value={ email } onChange={ handleInputChange } />
+        <input type="password" className="auth__input" placeholder="Password" name="pwd" value={ pwd } onChange={ handleInputChange } />
+        <input type="password" className="auth__input" placeholder="Password confirm" name="pwdConfirm" value={ pwdConfirm } onChange={ handleInputChange }/>
         <button type="submit" className="btn btn-primary btn-block">Register</button>
       </form>
 
