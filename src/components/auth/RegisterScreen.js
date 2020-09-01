@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import isEmail from 'validator/lib/isEmail';
 import { setError, removeError } from '../../actions/ui';
 
 export const RegisterScreen = () => {
 
   const dispatch = useDispatch();
+  const { msgError } = useSelector(state => state.ui)
 
   /* DELETE INITIFORM FOR PRODUCTION ============== */
   const initialForm = {
@@ -49,9 +50,7 @@ export const RegisterScreen = () => {
     <>
       <h3 className="auth__title">Register</h3>
 
-      <div className="auth__alert-error">
-        Hola mundo
-      </div>
+      { msgError && <div className="auth__alert-error"> { msgError} </div> }
 
       <form onSubmit={ handleSubmit }>
         <input type="text" className="auth__input" placeholder="Name" name="name" value={ name } onChange={ handleInputChange } />
