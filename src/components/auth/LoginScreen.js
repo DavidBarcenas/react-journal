@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from '../../hooks/useForm'
 import { startLoginEmailPwd, startGoogleLogin } from '../../actions/auth'
 import isEmail from 'validator/lib/isEmail'
@@ -9,6 +9,7 @@ import { setError, removeError } from '../../actions/ui'
 export const LoginScreen = () => {
 
   const dispatch = useDispatch();
+  const { loading } =  useSelector( state => state.ui);
 
   const [ formValues, handleInputChange ] = useForm({
     email: 'max@mail.com',
@@ -55,7 +56,7 @@ export const LoginScreen = () => {
           value={ pwd } 
           onChange={ handleInputChange } 
         />
-        <button type="submit" className="btn btn-primary btn-block">Sign in</button>
+        <button type="submit" disabled={ loading } className="btn btn-primary btn-block">Sign in</button>
       </form>
 
       <div>

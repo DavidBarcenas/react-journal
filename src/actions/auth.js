@@ -1,15 +1,21 @@
 import { types } from "../types/types";
 import { firebase, googleAuthProvider } from '../firebase/firebase-provider';     
+import { startLoading, finishLoading } from "./ui";
 
 /**
  * startLoginEmailPwd // async action
  */
 export const startLoginEmailPwd = ( email, pwd ) => {
   return ( dispatch ) => {
+    dispatch( startLoading() )
     firebase.auth().signInWithEmailAndPassword( email, pwd )
       .then( ({ user }) => {
-        console.log(user)
         dispatch(login( user.uid, user.displayName ))
+        dispatch( finishLoading() )
+      })
+      .catch( e => {
+        console.log(e)
+        dispatch( finishLoading() )
       })
   }
 }
