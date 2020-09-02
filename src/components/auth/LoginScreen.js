@@ -3,21 +3,35 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useForm } from '../../hooks/useForm'
 import { startLoginEmailPwd, startGoogleLogin } from '../../actions/auth'
+import isEmail from 'validator/lib/isEmail'
+import { setError, removeError } from '../../actions/ui'
 
 export const LoginScreen = () => {
 
   const dispatch = useDispatch();
 
   const [ formValues, handleInputChange ] = useForm({
-    email: 'davee@gmail.com',
-    pwd: '123456'
+    email: 'max@mail.com',
+    pwd: 'helloworld12'
   });
 
   const { email, pwd } = formValues;
 
+  const isFormValid = () => {
+    if(!isEmail( email ) || pwd.trim().length < 5 ) {
+      dispatch( setError('Invalid email or password') )
+      return false;
+    } 
+    dispatch( removeError() )
+    return true;
+  }
+
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch( startLoginEmailPwd( email, pwd ) )
+
+    if( isFormValid() ) {
+      dispatch( startLoginEmailPwd( email, pwd ) )
+    }
   }
 
   const handleGoogleLogin = () => dispatch( startGoogleLogin() )

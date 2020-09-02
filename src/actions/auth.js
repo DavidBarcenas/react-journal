@@ -6,9 +6,11 @@ import { firebase, googleAuthProvider } from '../firebase/firebase-provider';
  */
 export const startLoginEmailPwd = ( email, pwd ) => {
   return ( dispatch ) => {
-    setTimeout(() => {
-      dispatch(login(123, 'Daveepro'))
-    }, 3500);    
+    firebase.auth().signInWithEmailAndPassword( email, pwd )
+      .then( ({ user }) => {
+        console.log(user)
+        dispatch(login( user.uid, user.displayName ))
+      })
   }
 }
 
@@ -17,7 +19,7 @@ export const startRegister = ( email, pwd, name ) => {
     firebase.auth().createUserWithEmailAndPassword( email, pwd )
       .then( async({ user }) => {
         await user.updateProfile({ displayName: name })
-        dispatch( login( user.displayName, user.name ) )
+        dispatch(login( user.displayName, user.name ))
       })
       .catch( e => console.log(e))
   }
@@ -27,7 +29,7 @@ export const startGoogleLogin = () => {
   return ( dispatch ) => {
     firebase.auth().signInWithPopup( googleAuthProvider )
       .then( ({ user }) => {
-        dispatch( login( user.uid, user.displayName ) )
+        dispatch(login( user.uid, user.displayName ))
       })
   }
 }
