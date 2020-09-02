@@ -12,6 +12,17 @@ export const startLoginEmailPwd = ( email, pwd ) => {
   }
 }
 
+export const startRegister = ( email, pwd, name ) => {
+  return ( dispatch ) => {
+    firebase.auth().createUserWithEmailAndPassword( email, pwd )
+      .then( async({ user }) => {
+        await user.updateProfile({ displayName: name })
+        dispatch( login( user.displayName, user.name ) )
+      })
+      .catch( e => console.log(e))
+  }
+}
+
 export const startGoogleLogin = () => {
   return ( dispatch ) => {
     firebase.auth().signInWithPopup( googleAuthProvider )

@@ -4,6 +4,7 @@ import { useForm } from '../../hooks/useForm'
 import { useDispatch, useSelector } from 'react-redux';
 import isEmail from 'validator/lib/isEmail';
 import { setError, removeError } from '../../actions/ui';
+import { startRegister } from '../../actions/auth';
 
 export const RegisterScreen = () => {
 
@@ -12,7 +13,7 @@ export const RegisterScreen = () => {
 
   /* DELETE INITIFORM FOR PRODUCTION ============== */
   const initialForm = {
-    name: 'Maximilian',
+    name: 'Max',
     email: 'max@mail.com',
     pwd: 'helloworld12',
     pwdConfirm: 'helloworld12',
@@ -24,7 +25,7 @@ export const RegisterScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if( isFormValid() ) {
-      console.log('is correct')
+      dispatch( startRegister( email, pwd, name ) )
     }
   }
 
