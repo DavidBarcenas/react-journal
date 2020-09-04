@@ -5,19 +5,35 @@ import { AuthRouter } from './AuthRouter'
 import { firebase } from '../firebase/firebase-provider'
 import { useDispatch } from 'react-redux'
 import { login } from '../actions/auth'
+import { useState } from 'react'
+import { Loading } from '../components/loading/Loading'
 
 
 export const AppRouter = () => {
 
   const dispatch = useDispatch()
+  const [checking, setChecking] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(( user ) => {
       if( user?.uid ) {
         dispatch(login( user.uid, user.displayName ))
+        setIsLoggedIn(true)
+      } else {
+        setIsLoggedIn(false)
       }
+      setChecking(false)
     })
-  }, [dispatch])
+  }, [ dispatch, setChecking, setIsLoggedIn ])
+
+  if( checking ) {
+    return (
+      <div className="auth__main">
+        <Loading color={'white'}/>
+      </div>
+    )
+  }
 
   return (
     <Router>
