@@ -1,4 +1,5 @@
 import { types } from "../types/types";
+import Swal from 'sweetalert2'
 import { firebase, googleAuthProvider } from '../firebase/firebase-provider';     
 import { startLoading, finishLoading } from "./ui";
 
@@ -14,8 +15,9 @@ export const startLoginEmailPwd = ( email, pwd ) => {
         dispatch( finishLoading() )
       })
       .catch( e => {
-        console.log(e)
+        // console.log(e)
         dispatch( finishLoading() )
+        Swal.fire('Fail', e.message, 'error')
       })
   }
 }
@@ -27,7 +29,10 @@ export const startRegister = ( email, pwd, name ) => {
         await user.updateProfile({ displayName: name })
         dispatch(login( user.displayName, user.name ))
       })
-      .catch( e => console.log(e))
+      .catch( e => {
+        // console.log(e)
+        Swal.fire('Fail', e.message, 'error')
+      })
   }
 }
 
