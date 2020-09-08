@@ -14,6 +14,12 @@ export const notesrecuer = ( state = initialState, action) => {
           ...action.payload
         }
       }
+    
+    case types.noteLoad:
+      return {
+        ...state,
+        notes: [ ...action.payload ]
+      }
 
     default:
       return state;
