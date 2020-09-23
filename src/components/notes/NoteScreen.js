@@ -14,7 +14,7 @@ export const NoteScreen = () => {
   useEffect(() => {
     if( note.id !== activeId.current ) {
       reset(note)
-      activeId.current = note
+      activeId.current = note.id
     }
   }, [ note, reset ])
 
@@ -34,7 +34,7 @@ export const NoteScreen = () => {
 
         <div className="notes__image">
           { note.url &&
-            <img src="https://images6.alphacoders.com/857/857790.jpg" alt="note"/>
+            <img src={ note.url } alt={ note.title } />
           }
         </div>
       </div>
