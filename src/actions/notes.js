@@ -34,3 +34,16 @@ export const startLoadingNotes = ( uid ) => {
     dispatch(setNotes( notes ))
   }
 }
+
+export const startSaveNote = ( note ) => {
+  return async ( dispatch, getState ) => {
+    const {auth: { uid }} = getState();
+
+    if( !note.url ) { delete note.url }
+
+    const noteToFS = { ...note }
+    delete noteToFS.id;
+
+    await db.doc(`${ uid }/journal/notes/${ note.id }`).update(noteToFS)
+  }
+}
