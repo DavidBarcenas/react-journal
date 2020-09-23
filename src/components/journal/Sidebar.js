@@ -11,11 +11,11 @@ export const Sidebar = () => {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
-    dispatch( startLogout() )
+    dispatch(startLogout())
   }
 
   const handleAddNew = () => {
-    dispatch( startNewNote() )
+    dispatch(startNewNote())
   }
 
   return (
