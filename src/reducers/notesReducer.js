@@ -21,10 +21,17 @@ export const notesrecuer = ( state = initialState, action) => {
         notes: [ ...action.payload ]
       }
     
-      case types.noteUpdated:
+    case types.noteUpdated:
       return {
         ...state,
         notes: state.notes.map( note => note.id === action.payload.id ? action.payload.note : note)
+      }
+
+    case types.noteDelete:
+      return {
+        ...state,
+       active: null,
+       notes: state.notes.filter( note => note.id !== action.payload )
       }
 
     default:

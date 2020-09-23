@@ -61,3 +61,14 @@
     background: darken(#2196f3, 20); 
   }
 }
+
+.notes__btn-delete {
+  background: red;
+  margin: auto;
+  margin-top: 1em;
+  width: 90%;
+
+  &:hover {
+    background-color: darken(red, 10);
+  }
+}
