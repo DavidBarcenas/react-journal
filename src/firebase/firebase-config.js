@@ -7,3 +7,12 @@ export const firebaseConfig = {
   messagingSenderId: "197706763821",
   appId: "1:197706763821:web:f6838ac75860f42ed372a4"
 };
+
+export const firebaseConfigTesting = {}
+
+/*if( process.env.NODE_ENV === 'test' ) {
+
+} else {
+  // dev / prod
+}
+*/
