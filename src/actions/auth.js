@@ -9,7 +9,7 @@ import { startLoading, finishLoading } from "./ui";
 export const startLoginEmailPwd = ( email, pwd ) => {
   return ( dispatch ) => {
     dispatch( startLoading() )
-    firebase.auth().signInWithEmailAndPassword( email, pwd )
+    return firebase.auth().signInWithEmailAndPassword( email, pwd )
       .then( ({ user }) => {
         dispatch(login( user.uid, user.displayName ))
         dispatch( finishLoading() )
