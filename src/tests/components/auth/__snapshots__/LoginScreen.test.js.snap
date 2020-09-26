@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginScreen /> testing should render correctly 1`] = `
+Array [
+  <h3
+    className="auth__title"
+  >
+    Login
+  </h3>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="auth__input"
+      name="email"
+      onChange={[Function]}
+      placeholder="Email"
+      type="email"
+      value="max@mail.com"
+    />
+    <input
+      className="auth__input"
+      name="pwd"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value="helloworld12"
+    />
+    <button
+      className="btn btn-primary btn-block"
+      disabled={false}
+      type="submit"
+    >
+      Sign in
+    </button>
+  </form>,
+  <div>
+    <span
+      className="auth__social-text"
+    >
+      Login with social networks
+    </span>
+    <button
+      className="btn btn-block btn__google"
+      onClick={[Function]}
+    >
+      <div
+        className="btn__google-img"
+      >
+        <img
+          alt="google"
+          src="/images/google.svg"
+        />
+      </div>
+      <span>
+        Sign in with google
+      </span>
+    </button>
+    <a
+      className="auth__social-text"
+      href="/auth/register"
+      onClick={[Function]}
+    >
+       Create new account 
+    </a>
+  </div>,
+]
+`;
