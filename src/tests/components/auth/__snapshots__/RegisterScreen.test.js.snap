@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RegisterScreen /> testing should render correctly 1`] = `
+Array [
+  <h3
+    className="auth__title"
+  >
+    Register
+  </h3>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="auth__input"
+      name="name"
+      onChange={[Function]}
+      placeholder="Name"
+      type="text"
+      value="Max"
+    />
+    <input
+      className="auth__input"
+      name="email"
+      onChange={[Function]}
+      placeholder="Email"
+      type="email"
+      value="max@mail.com"
+    />
+    <input
+      className="auth__input"
+      name="pwd"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value="helloworld12"
+    />
+    <input
+      className="auth__input"
+      name="pwdConfirm"
+      onChange={[Function]}
+      placeholder="Password confirm"
+      type="password"
+      value="helloworld12"
+    />
+    <button
+      className="btn btn-primary btn-block"
+      type="submit"
+    >
+      Register
+    </button>
+  </form>,
+  <a
+    className="auth__social-text"
+    href="/auth/login"
+    onClick={[Function]}
+  >
+     Already registered?
+  </a>,
+]
+`;
