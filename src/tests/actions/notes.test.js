@@ -1,9 +1,16 @@
 import '@testing-library/jest-dom';
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk';
-import { startLoadingNotes, startNewNote, startSaveNote } from '../../actions/notes';
+import { startLoadingNotes, startNewNote, startSaveNote, startUploading } from '../../actions/notes';
 import { db } from '../../firebase/firebase-provider';
+import { fileUpload } from '../../helpers/fileUpload';
 import { types } from '../../types/types';
+
+jest.mock('../../helpers/fileUpload', () => ({
+  fileUpload: jest.fn(() => {
+    return 'https://hello-worl/photo.jpg'
+  })
+}))
  
 const middlewares = [thunk]
 const mockStore = configureStore(middlewares)
@@ -11,6 +18,13 @@ const mockStore = configureStore(middlewares)
 const initState = {
   auth: {
     uid: 'uTesiing'
+  },
+  notes: {
+    active: {
+      id: 'asdasd6as5d487ads',
+      title: 'hello world',
+      body: 'How are you?'
+    }
   }
 }
 
@@ -82,6 +96,15 @@ describe('<notes-actions /> testing', () => {
 
     const actions = store.getActions()
     expect( actions[0].type ).toBe(types.noteUpdated)
+  })
+
+
+  test('should upload an image', async () => {
+    const file = new File([], 'photo.jpg')
+    await store.dispatch( startUploading(file) )
+
+    const docRef = await db.doc(`/TESTING/journal/notes/${initState.notes.active.id}`).get()
+    expect(docRef.data().url).toBe('https://hello-worl/photo.jpg')
   })
   
 })
